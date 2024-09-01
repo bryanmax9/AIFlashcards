@@ -31,7 +31,7 @@ To set up the project locally, follow these steps:
 1. **Clone the repository:**
    ```bash
    git clone https://github.com/bryanmax9/AIFlashcards.git
-   cd AIFlashcards
+   cd .\flashcard-ai\
    ```
 2. **Install dependencies:**
    ```bash
