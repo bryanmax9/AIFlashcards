@@ -19,7 +19,7 @@ Return in the following JSON format
    {
     "front": str,
     "back": str,
-    }
+   }
   ]
 }
 `;
@@ -67,6 +67,14 @@ export async function POST(req) {
     } catch (parseError) {
       console.error("Failed to parse JSON:", jsonString);
       throw new Error("Failed to parse OpenAI response as JSON");
+    }
+
+    // Validate the flashcards
+    if (
+      !Array.isArray(flashcards.flashcards) ||
+      flashcards.flashcards.some((fc) => !fc.front || !fc.back)
+    ) {
+      throw new Error("Invalid flashcard structure");
     }
 
     return NextResponse.json({ flashcards: flashcards.flashcards });

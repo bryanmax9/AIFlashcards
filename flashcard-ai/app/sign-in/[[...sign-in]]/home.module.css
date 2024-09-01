@@ -35,7 +35,12 @@
 }
 
 .appBar {
-  background: rgba(255, 255, 255, 0.1); /* Semi-transparent white background */
+  background: rgba(
+    255,
+    255,
+    255,
+    0.1
+  ) !important; /* Semi-transparent white background */
   box-shadow: none; /* Remove the shadow */
   backdrop-filter: blur(10px); /* Add blur effect to the app bar */
   border-radius: 50px; /* Rounded edges */
