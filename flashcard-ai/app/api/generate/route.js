@@ -15,11 +15,11 @@ Ensure that each flashcard is easy to understand and designed to reinforce learn
 
 Return in the following JSON format without any trailing commas:
 {
-  "flashcards":[
-   {
-    "front": "question",
-    "back": "answer"
-   }
+  "flashcards": [
+    {
+      "front": "question",
+      "back": "answer"
+    }
   ]
 }
 `;
@@ -56,6 +56,10 @@ export async function POST(req) {
     const jsonEndIndex = messageContent.lastIndexOf("}") + 1;
 
     if (jsonStartIndex === -1 || jsonEndIndex === -1) {
+      console.error(
+        "Failed to extract JSON. Content received:",
+        messageContent
+      );
       throw new Error("Failed to extract JSON from OpenAI response");
     }
 
@@ -69,11 +73,14 @@ export async function POST(req) {
       throw new Error("Failed to parse OpenAI response as JSON");
     }
 
-    // Validate the flashcards
+    // Validate the flashcards structure
     if (
       !Array.isArray(flashcards.flashcards) ||
-      flashcards.flashcards.some((fc) => !fc.front || !fc.back)
+      flashcards.flashcards.some(
+        (fc) => typeof fc.front !== "string" || typeof fc.back !== "string"
+      )
     ) {
+      console.error("Invalid flashcard structure:", flashcards);
       throw new Error("Invalid flashcard structure");
     }
 
