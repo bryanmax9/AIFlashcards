@@ -36,5 +36,4 @@ yarn-error.log*
 next-env.d.ts
 
 # Large files to ignore
-flashcard-ai/public/purpleBG.mp4
 node_modules/@next/swc-win32-x64-msvc/next-swc.win32-x64-msvc.node
