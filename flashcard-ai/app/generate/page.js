@@ -71,7 +71,9 @@ export default function Generate() {
       setFlashcards(data.flashcards);
     } catch (error) {
       console.error("Error generating flashcards:", error);
-      alert("An error occurred while generating flashcards. Please try again.");
+      alert(
+        "An error occurred while generating flashcards. Please try again with a shorter input."
+      );
     } finally {
       setLoading(false);
     }
