@@ -2,17 +2,6 @@
 
 Welcome to the **Vimo AI Flashcard Generator**! This project uses AI to generate flashcards from user-provided text, helping users quickly grasp and retain key concepts.
 
-## Table of Contents
-
-- [Introduction](#introduction)
-- [Features](#features)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Deployment](#deployment)
-- [Technologies Used](#technologies-used)
-- [Contributing](#contributing)
-- [License](#license)
-
 ## Introduction
 
 Vimo AI is a flashcard generator powered by AI. Users can input text, and the AI generates concise and effective flashcards to aid learning. This project is built using Next.js, OpenAI, Firebase, and Material UI.
