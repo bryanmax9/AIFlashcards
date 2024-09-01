@@ -1,0 +1,371 @@
+.container {
+  width: 100vw;
+  min-height: 100vh; /* Changed from height to min-height */
+  padding: 0;
+  margin: 0;
+  overflow-x: hidden; /* Prevent horizontal overflow */
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.videoBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1; /* Ensure the video stays in the background */
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.9),
+    rgba(93, 27, 133, 0.8)
+  ); /* Dark overlay on top of the video */
+  z-index: -1; /* Keep the overlay behind the content but above the video */
+}
+
+.appBar {
+  background: rgba(255, 255, 255, 0.1); /* Semi-transparent white background */
+  box-shadow: none; /* Remove the shadow */
+  backdrop-filter: blur(10px); /* Add blur effect to the app bar */
+  border-radius: 50px; /* Rounded edges */
+  margin-top: 20px; /* Add some margin from the top */
+  width: fit-content;
+  padding: 10px 20px; /* Add some padding around the content */
+  margin-left: auto;
+  margin-right: auto;
+  z-index: 1; /* Ensure it's above the background */
+}
+
+.toolbar {
+  display: flex;
+  justify-content: center; /* Center the items */
+  gap: 20px; /* Add spacing between the buttons */
+}
+
+.title {
+  flex-grow: 0;
+  color: #ffffff; /* White text color */
+  font-weight: bold;
+  font-size: 1.2rem; /* Slightly larger font size */
+}
+
+.loginButton,
+.signupButton {
+  color: #ffffff; /* White text color */
+  background: transparent;
+  border: 1px solid #ffffff;
+  border-radius: 25px;
+  padding: 5px 15px;
+  transition: background 0.3s ease;
+}
+
+.loginButton:hover,
+.signupButton:hover {
+  background: rgba(255, 255, 255, 0.2); /* Slight background on hover */
+}
+
+.boxCentered {
+  text-align: center;
+  margin: 5rem 0; /* Reduced margin to make room for other sections */
+  color: #ffffff; /* White text color */
+  z-index: 1; /* Ensure it's above the background */
+}
+
+.welcomeTitle {
+  font-size: 4rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #ffffff; /* White text color */
+}
+
+.subtitle {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  color: #ffffff; /* White text color */
+}
+
+.featuresBox {
+  padding: 4rem 0; /* Added padding to ensure spacing */
+  z-index: 1; /* Ensure it's above the background */
+}
+
+.featuresTitle {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: #ffffff; /* White text color */
+  text-align: center;
+  padding-top: 2rem;
+  padding-bottom: 6rem;
+}
+
+.featureGrid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap; /* Make the grid wrap for smaller screens */
+  padding-bottom: 5rem;
+}
+
+.featureItem {
+  flex: 1 1 calc(33.333% - 2rem);
+  max-width: 350px; /* Ensure items don't stretch too wide */
+  min-width: 250px;
+  background: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
+  padding: 20px;
+  border-radius: 20px;
+  text-align: center;
+  margin: 0 auto; /* Center the items horizontally */
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.featureItem:hover {
+  transform: translateY(-10px); /* Slightly lift the card on hover */
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.featureItemTitle {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #ffffff; /* White text color */
+}
+
+.featureDescription {
+  font-size: 1rem;
+  color: #ffffff; /* White text color */
+}
+
+.pricingBox {
+  padding: 4rem 0; /* Added padding to ensure spacing */
+  z-index: 1; /* Ensure it's above the background */
+  text-align: center;
+}
+
+.pricingTitle {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: #ffffff; /* White text color */
+  padding-bottom: 3rem;
+}
+
+.pricingGrid {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap; /* Make the grid wrap for smaller screens */
+}
+
+.pricingItem {
+  flex: 1 1 calc(50% - 2rem);
+  min-width: 300px;
+  padding: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.3); /* Semi-transparent border */
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
+  text-align: center;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.pricingItem:hover {
+  transform: translateY(-10px); /* Slightly lift the card on hover */
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.pricingItemTitle {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #ffffff; /* White text color */
+}
+
+.pricingItemPrice {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+  color: #ffffff; /* White text color */
+}
+
+.pricingItemDescription {
+  font-size: 1rem;
+  margin-bottom: 2rem;
+  color: #ffffff; /* White text color */
+}
+
+.pricingButton {
+  background-color: #7209b7; /* Dark purple color for the button */
+  color: #ffffff; /* White text color */
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-size: 1rem;
+  margin-top: 2rem;
+  transition: background 0.3s ease;
+}
+
+.pricingButton:hover {
+  background-color: #560bad; /* Slightly darker shade on hover */
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+  .welcomeTitle {
+    font-size: 3rem;
+  }
+
+  .subtitle {
+    font-size: 1.2rem;
+  }
+
+  .featuresTitle,
+  .pricingTitle {
+    font-size: 2rem;
+  }
+
+  .featureItemTitle,
+  .pricingItemTitle {
+    font-size: 1.25rem;
+  }
+
+  .featureDescription,
+  .pricingItemDescription {
+    font-size: 0.9rem;
+  }
+
+  .appBar {
+    padding: 8px 16px; /* Smaller padding for the app bar */
+  }
+
+  .loginButton,
+  .signupButton {
+    padding: 4px 12px;
+    font-size: 0.9rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .welcomeTitle {
+    font-size: 2.5rem;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+  }
+
+  .featuresTitle,
+  .pricingTitle {
+    font-size: 1.75rem;
+  }
+
+  .featureItemTitle,
+  .pricingItemTitle {
+    font-size: 1.1rem;
+  }
+
+  .featureDescription,
+  .pricingItemDescription {
+    font-size: 0.8rem;
+  }
+
+  .pricingButton {
+    font-size: 0.9rem;
+    padding: 8px 16px;
+  }
+}
+
+.savedFlashcardsSection {
+  padding: 4rem 2rem;
+  background: rgba(
+    255,
+    255,
+    255,
+    0.05
+  ); /* Light overlay to distinguish the section */
+  z-index: 1; /* Ensure it's above the background */
+  text-align: center;
+}
+
+.gifContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.savedFlashcardsGif {
+  width: 100%;
+  max-width: 550px;
+  border-radius: 10px;
+}
+
+.savedFlashcardsText {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 2rem;
+  color: #ffffff;
+}
+
+.savedFlashcardsText h4 {
+  margin-bottom: 1rem;
+  color: #ffffff;
+}
+
+.savedFlashcardsText h6 {
+  margin-bottom: 2rem;
+  color: #ffffff;
+}
+
+.savedFlashcardsButton {
+  background-color: #7209b7; /* Dark purple color for the button */
+  color: #ffffff; /* White text color */
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-size: 1rem;
+  transition: background 0.3s ease;
+}
+
+.savedFlashcardsButton:hover {
+  background-color: #560bad; /* Slightly darker shade on hover */
+}
+
+.footer {
+  padding: 2rem;
+  background: rgba(0, 0, 0, 0.9);
+  text-align: center;
+  z-index: 1;
+  width: 100%;
+}
+
+.footerText {
+  color: #ffffff;
+  font-size: 0.9rem;
+}
+
+@media screen and (max-width: 768px) {
+  .savedFlashcardsText {
+    align-items: center;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .savedFlashcardsGif {
+    max-width: 300px;
+  }
+  .savedFlashcardsText h4 {
+    font-size: 1.5rem;
+  }
+  .savedFlashcardsText h6 {
+    font-size: 1rem;
+  }
+}

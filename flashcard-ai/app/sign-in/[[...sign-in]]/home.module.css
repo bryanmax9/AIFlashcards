@@ -1,0 +1,110 @@
+.container {
+  width: 100vw;
+  min-height: 100vh; /* Ensure it uses min-height to allow for content overflow */
+  padding: 0;
+  margin: 0;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: auto; /* Enable vertical scrolling */
+}
+
+.videoBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1; /* Ensure the video stays in the background */
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.8),
+    rgba(93, 27, 133, 0.7)
+  ); /* Dark overlay on top of the video */
+  z-index: -1; /* Keep the overlay behind the content but above the video */
+}
+
+.appBar {
+  background: rgba(255, 255, 255, 0.1); /* Semi-transparent white background */
+  box-shadow: none; /* Remove the shadow */
+  backdrop-filter: blur(10px); /* Add blur effect to the app bar */
+  border-radius: 50px; /* Rounded edges */
+  margin-top: 20px; /* Add some margin from the top */
+  width: 90%; /* Ensure the AppBar takes a proper width */
+  max-width: 1000px; /* Limit max-width */
+  padding: 10px 20px; /* Add some padding around the content */
+  z-index: 1; /* Ensure it's above the background */
+}
+.homeButton {
+  text-decoration: none;
+  color: #ffffff;
+  transition: transform 0.5s ease-in;
+}
+
+.homeButton:hover {
+  transform: scale(1.3); /* Slightly lift the card on hover */
+}
+
+.toolbar {
+  display: flex;
+  justify-content: space-between; /* Space between title and home button */
+  width: 100%;
+}
+
+.title {
+  color: #ffffff; /* White text color */
+  font-weight: bold;
+  font-size: 1.5rem; /* Larger font size */
+}
+
+.signInBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
+  padding: 2rem;
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  z-index: 1; /* Ensure it's above the background */
+  max-width: 400px;
+  margin: 4rem auto; /* Add margin to center and space out from the AppBar */
+}
+
+.signInTitle {
+  color: #ffffff; /* White text color */
+  margin-bottom: 1rem;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+  .title {
+    font-size: 1.25rem;
+  }
+
+  .signInBox {
+    padding: 1.5rem;
+    max-width: 90%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .title {
+    font-size: 1rem;
+  }
+
+  .signInBox {
+    padding: 1rem;
+    max-width: 95%;
+  }
+}
