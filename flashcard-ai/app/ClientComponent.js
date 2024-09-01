@@ -171,6 +171,82 @@ export default function ClientComponent() {
           </Grid>
         </Grid>
       </Box>
+      <Box className={styles.pricingSection}>
+        <Typography variant="h4" className={styles.pricingTitle} gutterBottom>
+          Choose Your Plan
+        </Typography>
+        <Grid container className={styles.pricingGrid} spacing={4}>
+          <Grid item xs={12} md={6}>
+            <Box
+              className={`${styles.pricingCard} ${styles.smallBusinessCard}`}
+            >
+              <Typography variant="h5" className={styles.pricingCardTitle}>
+                $5 Small Business
+              </Typography>
+              <ul className={styles.featuresList}>
+                <li className={styles.feature}>
+                  <span className={styles.checkmark}>✔</span> 10 Flashcards per
+                  request from AI
+                </li>
+                <li className={styles.feature}>
+                  <span className={styles.checkmark}>✔</span> Access to Storing
+                  Unlimited Flashcards
+                </li>
+                <li className={styles.feature}>
+                  <span className={styles.checkmark}>✘</span> Unlimited Requests
+                  per month
+                </li>
+                <li className={styles.feature}>
+                  <span className={styles.checkmark}>✘</span> Advanced AI
+                  capabilities for quality on Flashcards
+                </li>
+              </ul>
+              <Button
+                variant="contained"
+                color="secondary"
+                className={styles.pricingButton}
+                onClick={() => handleSubmit("basic")}
+              >
+                Select Plan
+              </Button>
+            </Box>
+          </Grid>
+          <Grid item xs={12} md={6}>
+            <Box className={`${styles.pricingCard} ${styles.enterpriseCard}`}>
+              <Typography variant="h5" className={styles.pricingCardTitle}>
+                $15 Enterprise
+              </Typography>
+              <ul className={styles.featuresList}>
+                <li className={styles.feature}>
+                  <span className={styles.checkmark}>✔</span> 10 Flashcards per
+                  request from AI
+                </li>
+                <li className={styles.feature}>
+                  <span className={styles.checkmark}>✔</span> Access to Storing
+                  Unlimited Flashcards
+                </li>
+                <li className={styles.feature}>
+                  <span className={styles.checkmark}>✔</span> Unlimited Requests
+                  per month
+                </li>
+                <li className={styles.feature}>
+                  <span className={styles.checkmark}>✔</span> Advanced AI
+                  capabilities for quality on Flashcards
+                </li>
+              </ul>
+              <Button
+                variant="contained"
+                color="secondary"
+                className={styles.pricingButton}
+                onClick={() => handleSubmit("pro")}
+              >
+                Select Plan
+              </Button>
+            </Box>
+          </Grid>
+        </Grid>
+      </Box>
+
       <Box className={styles.savedFlashcardsSection}>
         <Grid container spacing={4}>
           <Grid item xs={12} md={6} className={styles.gifContainer}>

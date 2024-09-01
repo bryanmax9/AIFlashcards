@@ -4,7 +4,7 @@ import Stripe from "stripe";
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
 const formatAmountForStripe = (amount) => {
-  return Math.round(amount * 100);
+  return Math.round(amount);
 };
 
 export async function GET(req) {
@@ -26,7 +26,7 @@ export async function GET(req) {
 export async function POST(req) {
   const { planType } = await req.json();
 
-  const price = planType === "pro" ? 10 : 5; // Set price based on plan
+  const price = planType === "pro" ? 1500 : 500; // Adjusted pricing to match Stripe format (cents)
 
   const params = {
     mode: "subscription",
@@ -56,7 +56,15 @@ export async function POST(req) {
       "origin"
     )}/result?session_id={CHECKOUT_SESSION_ID}`,
   };
-  const checkoutSession = await stripe.checkout.sessions.create(params);
 
-  return NextResponse.json(checkoutSession, { status: 200 });
+  try {
+    const checkoutSession = await stripe.checkout.sessions.create(params);
+    return NextResponse.json(checkoutSession, { status: 200 });
+  } catch (err) {
+    console.error("Error creating checkout session:", err);
+    return NextResponse.json(
+      { error: { message: err.message } },
+      { status: 500 }
+    );
+  }
 }
