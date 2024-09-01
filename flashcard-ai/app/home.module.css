@@ -1,9 +1,9 @@
 .container {
   width: 100vw;
-  min-height: 100vh; /* Changed from height to min-height */
+  min-height: 100vh;
   padding: 0;
   margin: 0;
-  overflow-x: hidden; /* Prevent horizontal overflow */
+  overflow-x: hidden;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -17,7 +17,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  z-index: -1; /* Ensure the video stays in the background */
+  z-index: -1;
 }
 
 .overlay {
@@ -30,342 +30,278 @@
     135deg,
     rgba(0, 0, 0, 0.9),
     rgba(93, 27, 133, 0.8)
-  ); /* Dark overlay on top of the video */
-  z-index: -1; /* Keep the overlay behind the content but above the video */
+  );
+  z-index: 0;
 }
 
 .appBar {
-  background: rgba(255, 255, 255, 0.1); /* Semi-transparent white background */
-  box-shadow: none; /* Remove the shadow */
-  backdrop-filter: blur(10px); /* Add blur effect to the app bar */
-  border-radius: 50px; /* Rounded edges */
-  margin-top: 20px; /* Add some margin from the top */
-  width: fit-content;
-  padding: 10px 20px; /* Add some padding around the content */
-  margin-left: auto;
-  margin-right: auto;
-  z-index: 1; /* Ensure it's above the background */
+  background: rgba(255, 255, 255, 0.1) !important;
+  box-shadow: none !important;
+  backdrop-filter: blur(10px) !important;
+  border-radius: 50px !important;
+  margin-top: 20px !important;
+  width: fit-content !important;
+  padding: 10px 20px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  z-index: 1 !important;
 }
 
 .toolbar {
-  display: flex;
-  justify-content: center; /* Center the items */
-  gap: 20px; /* Add spacing between the buttons */
+  display: flex !important;
+  justify-content: space-between !important;
+  width: 100%;
 }
 
 .title {
-  flex-grow: 0;
-  color: #ffffff; /* White text color */
-  font-weight: bold;
-  font-size: 1.2rem; /* Slightly larger font size */
+  color: #ffffff !important;
+  font-weight: bold !important;
+  font-size: 1.2rem !important;
 }
 
 .loginButton,
 .signupButton {
-  color: #ffffff; /* White text color */
-  background: transparent;
-  border: 1px solid #ffffff;
-  border-radius: 25px;
-  padding: 5px 15px;
-  transition: background 0.3s ease;
+  color: #ffffff !important;
+  background: transparent !important;
+  border: 1px solid #ffffff !important;
+  border-radius: 25px !important;
+  padding: 5px 15px !important;
+  transition: background 0.3s ease !important;
 }
 
 .loginButton:hover,
 .signupButton:hover {
-  background: rgba(255, 255, 255, 0.2); /* Slight background on hover */
+  background: rgba(255, 255, 255, 0.2) !important;
 }
 
 .boxCentered {
-  text-align: center;
-  margin: 5rem 0; /* Reduced margin to make room for other sections */
-  color: #ffffff; /* White text color */
-  z-index: 1; /* Ensure it's above the background */
+  text-align: center !important;
+  margin: 5rem 0 !important;
+  color: #ffffff !important;
+  z-index: 1 !important;
+  position: relative !important;
 }
 
 .welcomeTitle {
-  font-size: 4rem;
-  font-weight: bold;
-  margin-bottom: 1rem;
-  color: #ffffff; /* White text color */
+  font-size: 4rem !important;
+  font-weight: bold !important;
+  margin-bottom: 1rem !important;
+  color: #ffffff !important;
 }
 
 .subtitle {
-  font-size: 1.5rem;
-  margin-bottom: 2rem;
-  color: #ffffff; /* White text color */
+  font-size: 1.5rem !important;
+  margin-bottom: 2rem !important;
+  color: #ffffff !important;
 }
 
 .featuresBox {
-  padding: 4rem 0; /* Added padding to ensure spacing */
-  z-index: 1; /* Ensure it's above the background */
+  padding: 4rem 0 !important;
+  z-index: 1 !important;
 }
 
 .featuresTitle {
-  font-size: 2.5rem;
-  margin-bottom: 2rem;
-  color: #ffffff; /* White text color */
-  text-align: center;
-  padding-top: 2rem;
-  padding-bottom: 6rem;
+  font-size: 2.5rem !important;
+  margin-bottom: 2rem !important;
+  color: #ffffff !important;
+  text-align: center !important;
 }
 
 .featureGrid {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 2rem;
-  flex-wrap: wrap; /* Make the grid wrap for smaller screens */
-  padding-bottom: 5rem;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 2rem !important;
+  flex-wrap: wrap !important;
 }
 
 .featureItem {
-  flex: 1 1 calc(33.333% - 2rem);
-  max-width: 350px; /* Ensure items don't stretch too wide */
-  min-width: 250px;
-  background: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
-  padding: 20px;
-  border-radius: 20px;
-  text-align: center;
-  margin: 0 auto; /* Center the items horizontally */
-  transition: transform 0.3s ease, background 0.3s ease;
+  flex: 1 1 calc(33.333% - 2rem) !important;
+  max-width: 350px !important;
+  min-width: 250px !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+  padding: 20px !important;
+  border-radius: 20px !important;
+  text-align: center !important;
+  margin: 0 auto !important;
+  transition: transform 0.3s ease, background 0.3s ease !important;
 }
 
 .featureItem:hover {
-  transform: translateY(-10px); /* Slightly lift the card on hover */
-  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-10px) !important;
+  background: rgba(255, 255, 255, 0.2) !important;
 }
 
 .featureItemTitle {
-  font-size: 1.5rem;
-  font-weight: bold;
-  margin-bottom: 1rem;
-  color: #ffffff; /* White text color */
+  font-size: 1.5rem !important;
+  font-weight: bold !important;
+  margin-bottom: 1rem !important;
+  color: #ffffff !important;
 }
 
 .featureDescription {
-  font-size: 1rem;
-  color: #ffffff; /* White text color */
-}
-
-.pricingBox {
-  padding: 4rem 0; /* Added padding to ensure spacing */
-  z-index: 1; /* Ensure it's above the background */
-  text-align: center;
-}
-
-.pricingTitle {
-  font-size: 2.5rem;
-  margin-bottom: 2rem;
-  color: #ffffff; /* White text color */
-  padding-bottom: 3rem;
-}
-
-.pricingGrid {
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-  flex-wrap: wrap; /* Make the grid wrap for smaller screens */
-}
-
-.pricingItem {
-  flex: 1 1 calc(50% - 2rem);
-  min-width: 300px;
-  padding: 2rem;
-  border: 1px solid rgba(255, 255, 255, 0.3); /* Semi-transparent border */
-  border-radius: 20px;
-  background: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
-  text-align: center;
-  transition: transform 0.3s ease, background 0.3s ease;
-}
-
-.pricingItem:hover {
-  transform: translateY(-10px); /* Slightly lift the card on hover */
-  background: rgba(255, 255, 255, 0.2);
-}
-
-.pricingItemTitle {
-  font-size: 1.5rem;
-  font-weight: bold;
-  margin-bottom: 1rem;
-  color: #ffffff; /* White text color */
-}
-
-.pricingItemPrice {
-  font-size: 1.25rem;
-  margin-bottom: 1rem;
-  color: #ffffff; /* White text color */
-}
-
-.pricingItemDescription {
-  font-size: 1rem;
-  margin-bottom: 2rem;
-  color: #ffffff; /* White text color */
+  font-size: 1rem !important;
+  color: #ffffff !important;
 }
 
 .pricingButton {
-  background-color: #7209b7; /* Dark purple color for the button */
-  color: #ffffff; /* White text color */
-  padding: 10px 20px;
-  border-radius: 25px;
-  font-size: 1rem;
-  margin-top: 2rem;
-  transition: background 0.3s ease;
+  background-color: #7209b7 !important;
+  color: #ffffff !important;
+  padding: 10px 20px !important;
+  border-radius: 25px !important;
+  font-size: 1rem !important;
+  margin-top: 2rem !important;
+  transition: background 0.3s ease !important;
 }
 
 .pricingButton:hover {
-  background-color: #560bad; /* Slightly darker shade on hover */
+  background-color: #560bad !important;
 }
 
-/* Responsive Design */
+.savedFlashcardsSection {
+  padding: 4rem 2rem !important;
+  background: rgba(255, 255, 255, 0.05) !important;
+  z-index: 1 !important;
+  text-align: center !important;
+}
+
+.gifContainer {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+.savedFlashcardsGif {
+  width: 100% !important;
+  max-width: 550px !important;
+  border-radius: 10px !important;
+}
+
+.savedFlashcardsText {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: flex-start !important;
+  padding: 2rem !important;
+  color: #ffffff !important;
+}
+
+.savedFlashcardsText h4 {
+  margin-bottom: 1rem !important;
+  color: #ffffff !important;
+}
+
+.savedFlashcardsText h6 {
+  margin-bottom: 2rem !important;
+  color: #ffffff !important;
+}
+
+.savedFlashcardsButton {
+  background-color: #7209b7 !important;
+  color: #ffffff !important;
+  padding: 10px 20px !important;
+  border-radius: 25px !important;
+  font-size: 1rem !important;
+  transition: background 0.3s ease !important;
+}
+
+.savedFlashcardsButton:hover {
+  background-color: #560bad !important;
+}
+
+.footer {
+  padding: 2rem !important;
+  background: rgba(0, 0, 0, 0.9) !important;
+  text-align: center !important;
+  z-index: 1 !important;
+  width: 100% !important;
+}
+
+.footerText {
+  color: #ffffff !important;
+  font-size: 0.9rem !important;
+}
+
 @media screen and (max-width: 768px) {
   .welcomeTitle {
-    font-size: 3rem;
+    font-size: 3rem !important;
   }
 
   .subtitle {
-    font-size: 1.2rem;
+    font-size: 1.2rem !important;
   }
 
   .featuresTitle,
   .pricingTitle {
-    font-size: 2rem;
+    font-size: 2rem !important;
   }
 
   .featureItemTitle,
   .pricingItemTitle {
-    font-size: 1.25rem;
+    font-size: 1.25rem !important;
   }
 
   .featureDescription,
   .pricingItemDescription {
-    font-size: 0.9rem;
+    font-size: 0.9rem !important;
   }
 
   .appBar {
-    padding: 8px 16px; /* Smaller padding for the app bar */
+    padding: 8px 16px !important;
   }
 
   .loginButton,
   .signupButton {
-    padding: 4px 12px;
-    font-size: 0.9rem;
+    padding: 4px 12px !important;
+    font-size: 0.9rem !important;
   }
 }
 
 @media screen and (max-width: 480px) {
   .welcomeTitle {
-    font-size: 2.5rem;
+    font-size: 2.5rem !important;
   }
 
   .subtitle {
-    font-size: 1rem;
+    font-size: 1rem !important;
   }
 
   .featuresTitle,
   .pricingTitle {
-    font-size: 1.75rem;
+    font-size: 1.75rem !important;
   }
 
   .featureItemTitle,
   .pricingItemTitle {
-    font-size: 1.1rem;
+    font-size: 1.1rem !important;
   }
 
   .featureDescription,
   .pricingItemDescription {
-    font-size: 0.8rem;
+    font-size: 0.8rem !important;
   }
 
   .pricingButton {
-    font-size: 0.9rem;
-    padding: 8px 16px;
+    font-size: 0.9rem !important;
+    padding: 8px 16px !important;
   }
-}
-
-.savedFlashcardsSection {
-  padding: 4rem 2rem;
-  background: rgba(
-    255,
-    255,
-    255,
-    0.05
-  ); /* Light overlay to distinguish the section */
-  z-index: 1; /* Ensure it's above the background */
-  text-align: center;
-}
-
-.gifContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.savedFlashcardsGif {
-  width: 100%;
-  max-width: 550px;
-  border-radius: 10px;
-}
-
-.savedFlashcardsText {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  padding: 2rem;
-  color: #ffffff;
-}
-
-.savedFlashcardsText h4 {
-  margin-bottom: 1rem;
-  color: #ffffff;
-}
-
-.savedFlashcardsText h6 {
-  margin-bottom: 2rem;
-  color: #ffffff;
-}
-
-.savedFlashcardsButton {
-  background-color: #7209b7; /* Dark purple color for the button */
-  color: #ffffff; /* White text color */
-  padding: 10px 20px;
-  border-radius: 25px;
-  font-size: 1rem;
-  transition: background 0.3s ease;
-}
-
-.savedFlashcardsButton:hover {
-  background-color: #560bad; /* Slightly darker shade on hover */
-}
-
-.footer {
-  padding: 2rem;
-  background: rgba(0, 0, 0, 0.9);
-  text-align: center;
-  z-index: 1;
-  width: 100%;
-}
-
-.footerText {
-  color: #ffffff;
-  font-size: 0.9rem;
 }
 
 @media screen and (max-width: 768px) {
   .savedFlashcardsText {
-    align-items: center;
-    text-align: center;
+    align-items: center !important;
+    text-align: center !important;
   }
 }
 
 @media screen and (max-width: 480px) {
   .savedFlashcardsGif {
-    max-width: 300px;
+    max-width: 300px !important;
   }
   .savedFlashcardsText h4 {
-    font-size: 1.5rem;
+    font-size: 1.5rem !important;
   }
   .savedFlashcardsText h6 {
-    font-size: 1rem;
+    font-size: 1rem !important;
   }
 }
