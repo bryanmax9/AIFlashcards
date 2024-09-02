@@ -21,13 +21,11 @@ export async function POST(req) {
   const apiKey = process.env.OPENROUTER_API_KEY;
   const baseUrl = "https://openrouter.ai/api/v1";
   const data = await req.text();
-  const flashcardsPerBatch = 2; // Number of flashcards generated per batch
-  const totalFlashcards = 6; // Set this to 6 for generating exactly 6 flashcards
+  const flashcardsPerBatch = 1; // Reduce the number per batch to minimize response time
+  const totalFlashcards = 6;
   let flashcards = [];
-  let attempts = 0;
-  const maxAttempts = 3;
 
-  while (flashcards.length < totalFlashcards && attempts < maxAttempts) {
+  for (let i = 0; i < totalFlashcards; i++) {
     try {
       const client = new OpenAI({
         baseURL: baseUrl,
@@ -42,7 +40,7 @@ export async function POST(req) {
         ],
         response_format: "json",
         temperature: 0.1,
-        max_tokens: 100, // Adjust to allow enough tokens for 6 flashcards
+        max_tokens: 50, // Reduce tokens to minimize the response time
       });
 
       const completion = await fetchOpenAI;
@@ -61,23 +59,19 @@ export async function POST(req) {
 
       messageContent = sanitizeJsonString(messageContent);
 
-      console.log("Sanitized JSON String:", messageContent);
-
       if (!isJsonComplete(messageContent)) {
         console.error("Incomplete JSON response detected:", messageContent);
-        attempts++;
-        continue; // Retry if the JSON is incomplete
+        continue; // Skip incomplete responses without retrying
       }
 
       let jsonString = extractJsonString(messageContent);
 
       try {
-        console.log("Attempting to parse JSON:", jsonString);
         let batchFlashcards = JSON.parse(jsonString).flashcards;
         flashcards = flashcards.concat(batchFlashcards);
 
         if (flashcards.length >= totalFlashcards) {
-          flashcards = flashcards.slice(0, totalFlashcards); // Trim to the desired total
+          flashcards = flashcards.slice(0, totalFlashcards); // Ensure we get exactly 6 flashcards
           break;
         }
       } catch (parseError) {
@@ -86,17 +80,14 @@ export async function POST(req) {
       }
     } catch (error) {
       console.error("Error generating flashcards:", error.message);
-      if (attempts >= maxAttempts - 1) {
-        return NextResponse.json(
-          {
-            error:
-              "An error occurred during the flashcard generation process. Please try again.",
-          },
-          { status: 500 }
-        );
-      }
+      return NextResponse.json(
+        {
+          error:
+            "An error occurred during the flashcard generation process. Please try again.",
+        },
+        { status: 500 }
+      );
     }
-    attempts++;
   }
 
   return NextResponse.json({ flashcards });
