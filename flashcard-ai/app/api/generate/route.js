@@ -21,11 +21,13 @@ export async function POST(req) {
   const apiKey = process.env.OPENROUTER_API_KEY;
   const baseUrl = "https://openrouter.ai/api/v1";
   const data = await req.text();
-  const flashcardsPerBatch = 2; // Reduce to 2 flashcards per request
-  const totalFlashcards = 6; // Adjust to a lower total for testing
+  const flashcardsPerBatch = 2; // Number of flashcards generated per batch
+  const totalFlashcards = 6; // Set this to 6 for generating exactly 6 flashcards
   let flashcards = [];
+  let attempts = 0;
+  const maxAttempts = 3;
 
-  for (let i = 0; i < totalFlashcards / flashcardsPerBatch; i++) {
+  while (flashcards.length < totalFlashcards && attempts < maxAttempts) {
     try {
       const client = new OpenAI({
         baseURL: baseUrl,
@@ -40,7 +42,7 @@ export async function POST(req) {
         ],
         response_format: "json",
         temperature: 0.1,
-        max_tokens: 100, // Increase token limit to allow more content
+        max_tokens: 100, // Adjust to allow enough tokens for 6 flashcards
       });
 
       const completion = await fetchOpenAI;
@@ -57,30 +59,44 @@ export async function POST(req) {
         throw new Error("Invalid response from OpenAI");
       }
 
-      // Log the received content for debugging
-      console.log("Received JSON String:", messageContent);
-
-      // Ensure proper JSON formatting before parsing
       messageContent = sanitizeJsonString(messageContent);
+
+      console.log("Sanitized JSON String:", messageContent);
+
+      if (!isJsonComplete(messageContent)) {
+        console.error("Incomplete JSON response detected:", messageContent);
+        attempts++;
+        continue; // Retry if the JSON is incomplete
+      }
+
       let jsonString = extractJsonString(messageContent);
 
       try {
+        console.log("Attempting to parse JSON:", jsonString);
         let batchFlashcards = JSON.parse(jsonString).flashcards;
         flashcards = flashcards.concat(batchFlashcards);
+
+        if (flashcards.length >= totalFlashcards) {
+          flashcards = flashcards.slice(0, totalFlashcards); // Trim to the desired total
+          break;
+        }
       } catch (parseError) {
         console.error("Failed to parse JSON:", jsonString);
         throw new Error("Parsing error");
       }
     } catch (error) {
       console.error("Error generating flashcards:", error.message);
-      return NextResponse.json(
-        {
-          error:
-            "An error occurred during the flashcard generation process. Please try again.",
-        },
-        { status: 500 }
-      );
+      if (attempts >= maxAttempts - 1) {
+        return NextResponse.json(
+          {
+            error:
+              "An error occurred during the flashcard generation process. Please try again.",
+          },
+          { status: 500 }
+        );
+      }
     }
+    attempts++;
   }
 
   return NextResponse.json({ flashcards });
@@ -90,14 +106,14 @@ export async function POST(req) {
 function sanitizeJsonString(jsonString) {
   return jsonString
     .trim()
-    .replace(/\\n/g, "")
-    .replace(/\\'/g, "'")
-    .replace(/\\"/g, '"')
-    .replace(/\\&/g, "&")
-    .replace(/\\r/g, "")
-    .replace(/\\t/g, "")
-    .replace(/\\b/g, "")
-    .replace(/\\f/g, "")
+    .replace(/\n/g, "")
+    .replace(/'/g, "'")
+    .replace(/"/g, '"')
+    .replace(/&/g, "&")
+    .replace(/\r/g, "")
+    .replace(/\t/g, "")
+    .replace(/\b/g, "")
+    .replace(/\f/g, "")
     .replace(/,\s*[\]}]/g, (match) => match.trim().slice(1));
 }
 
@@ -115,4 +131,11 @@ function extractJsonString(messageContent) {
   }
 
   return messageContent.substring(jsonStartIndex, jsonEndIndex);
+}
+
+// Function to check if the JSON response is complete
+function isJsonComplete(messageContent) {
+  return (
+    messageContent.trim().endsWith("}") && messageContent.includes('"back":')
+  );
 }

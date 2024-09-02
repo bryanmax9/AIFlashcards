@@ -175,6 +175,7 @@ export default function ClientComponent() {
         <Typography variant="h4" className={styles.pricingTitle} gutterBottom>
           Choose Your Plan
         </Typography>
+
         <Grid container className={styles.pricingGrid} spacing={4}>
           <Grid item xs={12} md={6}>
             <Box
